@@ -1,0 +1,152 @@
+.banner {
+  width: 100%;
+  height: 25rem;
+  object-fit: cover;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  gap: 5rem;
+  color: white;
+
+  .post {
+
+   
+    @media screen and (max-width: 700px) {
+      padding: 1rem;
+    }
+
+     @media screen and (max-width: 425px) {
+      margin-top: 2rem;
+    }
+
+    @media screen and (max-width: 425px) {
+      margin-top: 4rem;
+    }
+
+    h2 {
+      font-size: 2.25rem;
+      color: var(--white);
+      margin: 3rem 0;
+      text-align: center;
+
+      @media screen and (max-width: 425px) {
+        text-align: center;
+        padding-top: 1rem;
+        font-size: 2rem;
+      }
+    }
+
+    p,
+    span,
+    a,
+    ul {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      margin: 1.8rem 0;
+    }
+
+    
+
+    strong {
+      font-weight: 700;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    .postTop {
+      margin-bottom: 2rem;
+
+      > h1 {
+        font-size: 3rem;
+        color: var(--yellow);
+        margin: 3rem 0;
+        text-align: center;
+
+        @media screen and (max-width: 425px) {
+          text-align: center;
+          font-size: 2.5rem;
+        }
+      }
+
+      div.info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media screen and (max-width: 450px) {
+          flex-direction: column;
+        }
+
+        @media screen and (max-width: 500px) {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        @media screen and (max-width: 400px) {
+          align-items: center;
+          justify-content: center;
+        }
+
+        @media screen and (max-width: 467px) {
+          align-items: center;
+          font-size: 6rem;
+        }
+
+        ul {
+          padding: 0;
+          list-style: none;
+          display: flex;
+          align-items: center;
+          margin-right: 3rem;
+
+          & svg {
+            margin-right: 0.5rem;
+          }
+
+          li {
+            margin-right: 0.5rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            background-color: var(--yellow);
+            padding: 0.3rem;
+            border-radius: 4px;
+            color: var(--black2);
+          }
+        }
+      }
+    }
+  }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #ffff;
+  
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+  
+    a {
+      color: var(--yellow);
+      font-weight: 600;
+    }
+  
+    div {
+      
+      margin: 2rem;
+    }
+  
+    div + div {
+      text-align: right;
+    }
+  }
+}

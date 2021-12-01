@@ -1,12 +1,15 @@
 import styles from './home.module.scss'
 import { useState } from 'react';
+import Head from "next/head";
+
 
 import { FaCalendarAlt } from "react-icons/fa";
 import { AiFillTags } from "react-icons/ai";
 
+
 import { GetStaticProps } from 'next';
-import Link from 'next/link'
 import { getPrismicClient } from '../services/prismic';
+import Link from 'next/link'
 import Prismic from '@prismicio/client';
 
 import { format } from 'date-fns';
@@ -55,6 +58,7 @@ export default function Home({ postsPagination }: HomeProps) {
 
 
   async function handleNextPage(): Promise<void> {
+    console.log(currentPage)
     if (currentPage === 1 && nextPage === null) {
       return;
     }
@@ -62,6 +66,8 @@ export default function Home({ postsPagination }: HomeProps) {
     const postsResults = await fetch(`${nextPage}`).then(response =>
       response.json()
     );
+
+
 
     setNextPage(postsResults.next_page);
     setCurrentPage(postsResults.page)
@@ -90,11 +96,16 @@ export default function Home({ postsPagination }: HomeProps) {
 
   return (
     <>
+
+      <Head>
+        <title>Inicio | Fansports</title>
+      </Head>
+    
       <main className={styles.container}>
         <section className={styles.contentContainer}>
 
           <div className={styles.fans}>
-            <img src="/images/fansports.svg" alt="fansports" />
+            <img src="fansports.svg" alt="fansports" />
           </div>
 
 
@@ -110,7 +121,7 @@ export default function Home({ postsPagination }: HomeProps) {
 
             <div className={styles.cardContainer}>
               {posts.filter(post => post === posts[0]).map(post => (
-                <Link href='/' key={post.uid}>
+                <Link href={`/post/${post.uid}`}key={post.uid}>
                   <a className={styles.card} >
                     <h3>{post.data.title}</h3>
 
@@ -142,7 +153,7 @@ export default function Home({ postsPagination }: HomeProps) {
 
           <div className={styles.cardContainer}>
             {posts.filter(post => post !== posts[0]).map(post => (
-              <Link href='/' key={post.uid}>
+              <Link href={`/post/${post.uid}`} key={post.uid}>
                 <a className={styles.card} >
                   <h3>{post.data.title}</h3>
 
@@ -153,7 +164,7 @@ export default function Home({ postsPagination }: HomeProps) {
                         <li key={tag}>{tag}</li>
                       ))}
                     </ul>
-                    <ul className={styles.data}>
+                    <ul>
                       <FaCalendarAlt />
                       <li> {post.first_publication_date}</li>
                     </ul>
@@ -187,6 +198,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       orderings: '[document.last_publication_date desc]'
     }
   )
+
 
   const posts = postResponse.results.map(post => {
     return {
