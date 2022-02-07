@@ -1,7 +1,7 @@
 import styles from './home.module.scss'
 import { useState } from 'react';
 import Head from "next/head";
-import Image from 'next/image'; 
+
 
 
 import { FaCalendarAlt } from "react-icons/fa";
@@ -106,7 +106,7 @@ export default function Home({ postsPagination }: HomeProps) {
         <section className={styles.contentContainer}>
 
           <div className={styles.fans}>
-            <img src="/fansports.svg" alt="fansports" />
+            <img src="fansports.svg" alt="fansports" />
           </div>
 
 
