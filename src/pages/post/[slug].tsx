@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from 'next/image'; 
 import styles from './post.module.scss'
 import Prismic from '@prismicio/client'
 import Link from 'next/link'
@@ -76,7 +77,7 @@ export default function Post({ post, navigation }: PostProps) {
       </Head>
 
       <header>
-        <img src={post.data.banner.url} className={styles.banner} />
+        <img alt="." src={post.data.banner.url} className={styles.banner} />
         <main className={styles.container}>
           <div className={styles.post}>
             <div className={styles.postTop}>
@@ -86,7 +87,7 @@ export default function Post({ post, navigation }: PostProps) {
                 <ul>
                   <AiFillTags />
                   {post.tags.map(tag => (
-                    <li>{tag}</li>
+                    <li key={post.uid}>{tag}</li>
                   ))}
                 </ul>
 
